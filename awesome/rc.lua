@@ -88,10 +88,10 @@ local themes = {
 local chosen_theme = themes[6]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "x-terminal-emulator"
+local terminal     = "xfce4-terminal"
 local editor       = os.getenv("EDITOR") or "vim"
 local gui_editor   = "gvim"
-local browser      = "google-chrome"
+local browser      = "firefox"
 local guieditor    = "atom"
 local scrlocker    = "slock"
 
@@ -768,3 +768,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- possible workaround for tag preservation when switching back to default screen:
 -- https://github.com/lcpz/awesome-copycats/issues/251
 -- }}}
+awful.util.spawn_with_shell("xscreensaver -no-splash")
