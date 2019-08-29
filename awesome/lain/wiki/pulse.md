@@ -68,19 +68,19 @@ volume.widget:buttons(awful.util.table.join(
         awful.spawn("pavucontrol")
     end),
     awful.button({}, 2, function() -- middle click
-        os.execute(string.format("pactl set-sink-volume %d 100%%", volume.device))
+        os.execute(string.format("pactl set-sink-volume %s 100%%", volume.device))
         volume.update()
     end),
     awful.button({}, 3, function() -- right click
-        os.execute(string.format("pactl set-sink-mute %d toggle", volume.device))
+        os.execute(string.format("pactl set-sink-mute %s toggle", volume.device))
         volume.update()
     end),
     awful.button({}, 4, function() -- scroll up
-        os.execute(string.format("pactl set-sink-volume %d +1%%", volume.device))
+        os.execute(string.format("pactl set-sink-volume %s +1%%", volume.device))
         volume.update()
     end),
     awful.button({}, 5, function() -- scroll down
-        os.execute(string.format("pactl set-sink-volume %d -1%%", volume.device))
+        os.execute(string.format("pactl set-sink-volume %s -1%%", volume.device))
         volume.update()
     end)
 ))
@@ -92,27 +92,27 @@ volume.widget:buttons(awful.util.table.join(
 -- PulseAudio volume control
 awful.key({ altkey }, "Up",
     function ()
-        os.execute(string.format("pactl set-sink-volume %d +1%%", volume.device))
+        os.execute(string.format("pactl set-sink-volume %s +1%%", volume.device))
         volume.update()
     end),
 awful.key({ altkey }, "Down",
     function ()
-        os.execute(string.format("pactl set-sink-volume %d -1%%", volume.device))
+        os.execute(string.format("pactl set-sink-volume %s -1%%", volume.device))
         volume.update()
     end),
 awful.key({ altkey }, "m",
     function ()
-        os.execute(string.format("pactl set-sink-mute %d toggle", volume.device))
+        os.execute(string.format("pactl set-sink-mute %s toggle", volume.device))
         volume.update()
     end),
 awful.key({ altkey, "Control" }, "m",
     function ()
-        os.execute(string.format("pactl set-sink-volume %d 100%%", volume.device))
+        os.execute(string.format("pactl set-sink-volume %s 100%%", volume.device))
         volume.update()
     end),
 awful.key({ altkey, "Control" }, "0",
     function ()
-        os.execute(string.format("pactl set-sink-volume %d 0%%", volume.device))
+        os.execute(string.format("pactl set-sink-volume %s 0%%", volume.device))
         volume.update()
     end),
 ```

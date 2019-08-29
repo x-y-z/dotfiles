@@ -16,7 +16,7 @@ local wibox         = require("wibox")
 local beautiful     = require("beautiful")
 local naughty       = require("naughty")
 local lain          = require("lain")
-local menubar       = require("menubar")
+--local menubar       = require("menubar")
 local freedesktop   = require("freedesktop")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
                       require("awful.hotkeys_popup.keys")
@@ -57,7 +57,7 @@ local function run_once(cmd_arr)
     end
 end
 
---run_once({ "urxvtd", "unclutter -root" }) -- entries must be separated by commas
+run_once({ "urxvtd", "unclutter -root" }) -- entries must be separated by commas
 
 -- This function implements the XDG autostart specification
 --[[
@@ -86,10 +86,10 @@ local themes = {
     "vertex",          -- 10
 }
 
-local chosen_theme = themes[6]
+local chosen_theme = themes[5]
 local modkey       = "Mod4"
 local altkey       = "Mod1"
-local terminal     = "xterm"
+local terminal     = "urxvtc"
 local editor       = os.getenv("EDITOR") or "vim"
 local gui_editor   = "gvim"
 local browser      = "firefox"
@@ -159,7 +159,7 @@ awful.util.tasklist_buttons = my_table.join(
             c:raise()
         end
     end),
-    --awful.button({ }, 2, function (c) c:kill() end),
+    awful.button({ }, 2, function (c) c:kill() end),
     awful.button({ }, 3, function ()
         local instance = nil
 
@@ -509,12 +509,12 @@ globalkeys = my_table.join(
               {description = "run gui editor", group = "launcher"}),
 
     -- Default
-    -- Menubar
+    --[[ Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
+              {description = "show the menubar", group = "launcher"})
     --]]
-    -- dmenu
-    awful.key({ modkey }, "r", function ()
+    --[[ dmenu
+    awful.key({ modkey }, "x", function ()
             os.execute(string.format("dmenu_run -i -fn 'Monospace' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
             beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus))
         end,
@@ -529,7 +529,7 @@ globalkeys = my_table.join(
         end,
         {description = "show rofi", group = "launcher"}),
     --]]
-    --[[ Prompt
+    -- Prompt
     awful.key({ modkey }, "r", function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
@@ -716,7 +716,7 @@ client.connect_signal("request::titlebars", function(c)
             c:emit_signal("request::activate", "titlebar", {raise = true})
             awful.mouse.client.move(c)
         end),
-        --awful.button({ }, 2, function() c:kill() end),
+        awful.button({ }, 2, function() c:kill() end),
         awful.button({ }, 3, function()
             c:emit_signal("request::activate", "titlebar", {raise = true})
             awful.mouse.client.resize(c)
@@ -760,4 +760,3 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- possible workaround for tag preservation when switching back to default screen:
 -- https://github.com/lcpz/awesome-copycats/issues/251
 -- }}}
-awful.util.spawn_with_shell("xscreensaver -no-splash")
