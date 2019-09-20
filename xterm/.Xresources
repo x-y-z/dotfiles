@@ -1,5 +1,5 @@
 
-*termName: xterm-256color
+!*termName: xterm-256color
 
 xterm*locale: true
 
@@ -76,12 +76,13 @@ XTerm*cursorColor    : _cursorColor
 
 !urxvt
 
+Xft.dpi:   96
 !! URxvt Appearance
-URxvt.font: xft:DejaVuSansMono:size=12:antialias=true
+URxvt*font: xft:DejaVu Sans Mono:size=12:antialias=true,xft:Unifont:size=9:antialias=true
 URxvt.letterSpace: 0
 URxvt.lineSpace: 0
 URxvt.internalBorder: 2
-URxvt.cursorBlink: true
+URxvt.cursorBlink: false
 URxvt.cursorUnderline: false
 URxvt.saveline: 2048
 URxvt.scrollBar: false
@@ -89,6 +90,7 @@ URxvt.scrollBar_right: false
 URxvt.urgentOnBell: true
 URxvt.depth: 24
 URxvt.iso14755: false
+URxvt.buffered: false
 !! Common Keybinds for Navigations
 URxvt.keysym.Shift-Up: command:\033]720;1\007
 URxvt.keysym.Shift-Down: command:\033]721;1\007
@@ -96,6 +98,16 @@ URxvt.keysym.Control-Up: \033[1;5A
 URxvt.keysym.Control-Down: \033[1;5B
 URxvt.keysym.Control-Right: \033[1;5C
 URxvt.keysym.Control-Left: \033[1;5D
+
+URxvt.perl-ext: default,url-select,clipboard
+!! Yankable URLs
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+!! clipboard
+URxvt.clipboard.autocopy: true
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
 
 
 URxvt*color0         : _color0
