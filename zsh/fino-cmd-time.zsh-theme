@@ -36,7 +36,7 @@ _command_time_precmd() {
       timer_show=$(printf '%dh:%02dm:%02ds\n' $(($timer_show/3600)) $(($timer_show%3600/60)) $(($timer_show%60)))
       export ZSH_COMMAND_TIME="Last cmd used: $timer_show"
     fi
-    export  PROMPT="╭─%{$FG[040]%}%n%{$reset_color%} %{$FG[239]%}at%{$reset_color%} %{$FG[033]%}$(box_name)%{$reset_color%} %{$FG[239]%}in%{$reset_color%} %{$terminfo[bold]$FG[226]%}%~%{$reset_color%}${git_info} %{$FG[239]%}${ruby_env} ${ZSH_COMMAND_TIME}
+    export  PROMPT="╭─%{$FG[040]%}%n%{$reset_color%}%{$FG[239]%}@%{$reset_color%}%{$FG[033]%}$(box_name)%{$reset_color%}%{$FG[239]%}:%{$reset_color%}%{$terminfo[bold]$FG[226]%}%~%{$reset_color%}${git_info} %{$FG[239]%}${ruby_env} ${ZSH_COMMAND_TIME}
 ╰─${prompt_char}%{$reset_color%} "
     unset timer
   fi
@@ -46,7 +46,7 @@ precmd_functions+=(_command_time_precmd)
 preexec_functions+=(_command_time_preexec)
 
 
-PROMPT="╭─%{$FG[040]%}%n%{$reset_color%} %{$FG[239]%}at%{$reset_color%} %{$FG[033]%}$(box_name)%{$reset_color%} %{$FG[239]%}in%{$reset_color%} %{$terminfo[bold]$FG[226]%}%~%{$reset_color%}${git_info} %{$FG[239]%}${ruby_env} ${ZSH_COMMAND_TIME}
+PROMPT="╭─%{$FG[040]%}%n%{$reset_color%}%{$FG[239]%}@%{$reset_color%}%{$FG[033]%}$(box_name)%{$reset_color%}%{$FG[239]%}:%{$reset_color%}%{$terminfo[bold]$FG[226]%}%~%{$reset_color%}${git_info} %{$FG[239]%}${ruby_env} ${ZSH_COMMAND_TIME}
 ╰─${prompt_char}%{$reset_color%} "
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" %{$FG[239]%}on%{$reset_color%} %{$fg[255]%}"
